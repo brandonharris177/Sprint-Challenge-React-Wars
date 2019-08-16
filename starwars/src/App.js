@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from 'axios'
-import CreateCharecter from "./components/CreateCharecter"
+import CreateCharacter from "./components/CreateCharacter"
+// import styled from "styled-components";
+
 
 const App = () => {
 
@@ -12,7 +14,7 @@ const App = () => {
   useEffect(() => {
     axios.get("https://swapi.co/api/people/")
     .then((response) => {
-      console.log(response.data.results)
+      // console.log(response.data.results)
       setName(response.data.results)
     }).catch((err) => {
       console.log(err)
@@ -25,9 +27,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="Header">React Wars</h1>
-      {nameState.map((charecterNames) =>{
-        return <CreateCharecter className = "Names" key = {charecterNames.name} name = {charecterNames.name}/>
+      <h2>A long time ago far far away there were...</h2>
+      <h1 className = "Header">React Wars</h1>
+      {nameState.map((charecter) =>{
+        return <CreateCharacter className = "Names" key = {charecter.name} name = {charecter.name} year = {charecter.birth_year}/>
       })}
     </div>
   );
